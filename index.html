@@ -1,126 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<hmtl lang=en>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Weather Map</title>
-    <!-- Leaflet CSS & JS for Interactive Map -->
-    <link rel="stylesheet" href="https://unpkg.com" />
-    <script src="https://unpkg.com"></script>
-    <!-- Chart.js -->
-    <script src="https://jsdelivr.net"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com"></script>
-    <style>
-        :root {
-            --bg-main: #0f172a; --bg-panel: #1e293b; --border-color: #334155; 
-            --text-primary: #f8fafc; --text-secondary: #94a3b8; --accent: #2563eb; 
-            --accent-hover: #3b82f6; --accent-alpha: rgba(37, 99, 235, 0.15);
-        }
-        .theme-winter { --bg-main: #edf2f7; --bg-panel: #ffffff; --border-color: #e2e8f0; --text-primary: #1a202c; --text-secondary: #4a5568; --accent: #3182ce; --accent-hover: #63b3ed; --accent-alpha: rgba(49, 130, 206, 0.1); }
-        .theme-summer { --bg-main: #fffff0; --bg-panel: #fffaf0; --border-color: #feebc8; --text-primary: #7b341e; --text-secondary: #c05621; --accent: #dd6b20; --accent-hover: #f6ad55; --accent-alpha: rgba(221, 107, 32, 0.1); }
-        .theme-dark { --bg-main: #09090b; --bg-panel: #18181b; --border-color: #27272a; --text-primary: #f4f4f5; --text-secondary: #a1a1aa; --accent: #52525b; --accent-hover: #a1a1aa; --accent-alpha: rgba(82, 82, 91, 0.1); }
-        .theme-light { --bg-main: #f4f4f5; --bg-panel: #ffffff; --border-color: #e4e4e7; --text-primary: #09090b; --text-secondary: #71717a; --accent: #18181b; --accent-hover: #3f3f46; --accent-alpha: rgba(24, 24, 27, 0.05); }
-        .theme-blue { --bg-main: #0f172a; --bg-panel: #1e293b; --border-color: #334155; --text-primary: #f8fafc; --text-secondary: #94a3b8; --accent: #2563eb; --accent-hover: #3b82f6; --accent-alpha: rgba(37, 99, 235, 0.15); }
-        .theme-green { --bg-main: #022c22; --bg-panel: #064e3b; --border-color: #0f766e; --text-primary: #f0fdf4; --text-secondary: #86efac; --accent: #10b981; --accent-hover: #34d399; --accent-alpha: rgba(16, 185, 129, 0.2); }
-        .theme-red { --bg-main: #450a0a; --bg-panel: #7f1d1d; --border-color: #991b1b; --text-primary: #fef2f2; --text-secondary: #fca5a5; --accent: #ef4444; --accent-hover: #f87171; --accent-alpha: rgba(239, 68, 68, 0.2); }
-        .theme-orange { --bg-main: #431407; --bg-panel: #7c2d12; --border-color: #9a3412; --text-primary: #fff7ed; --text-secondary: #fb923c; --accent: #f97316; --accent-hover: #fb923c; --accent-alpha: rgba(249, 115, 22, 0.2); }
+    <title>My Friends Website!</title>
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-main); color: var(--text-primary); font-family: system-ui, sans-serif; height: 100vh; width: 100vw; overflow: hidden; display: flex; flex-direction: column; transition: background-color 0.2s, color 0.2s; }
-        
-        header { background-color: var(--bg-panel); border-b: 1px solid var(--border-color); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .header-title { font-size: 1.25rem; font-weight: 700; }
-        .header-title span { color: var(--accent); }
-        
-        .workspace { flex: 1; display: flex; overflow: hidden; position: relative; }
-        aside { width: 360px; background-color: var(--bg-panel); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; padding: 1.5rem; gap: 1.25rem; overflow-y: auto; z-index: 30; }
-        
-        .layer-box { display: flex; flex-direction: column; gap: 0.5rem; }
-        .box-heading { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); }
-        .layer-grid { display: grid; grid-template-cols: 1fr 1fr; gap: 0.5rem; }
-        
-        .btn { background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 0.6rem; text-align: left; color: var(--text-secondary); font-weight: 500; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
-        .btn:hover { background: var(--bg-main); color: var(--text-primary); }
-        .btn-active { background-color: var(--accent-alpha) !important; border-color: var(--accent) !important; color: var(--accent-hover) !important; }
-        
-        .telemetry-card { background: rgba(0,0,0,0.15); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: 1rem; display: flex; flex-direction: column; gap: 0.4rem; }
-        .coords { font-family: monospace; font-size: 0.75rem; color: var(--text-secondary); }
-        .stats-grid { display: grid; grid-template-cols: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--border-color); }
-        .stat-label { font-size: 0.7rem; color: var(--text-secondary); }
-        .stat-val { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); }
-        
-        .chart-box { height: 130px; position: relative; }
-        
-        .map-pane { flex: 1; background-color: var(--bg-main); display: flex; flex-direction: column; position: relative; overflow: hidden; }
-        #map { flex: 1; width: 100%; height: 100%; z-index: 10; background-color: #0b1329 !important; }
-        
-        .timeline-bar { background-color: var(--bg-panel); border-top: 1px solid var(--border-color); padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1.5rem; height: 75px; z-index: 20; }
-        .play-btn { background-color: var(--accent); border: none; width: 40px; height: 40px; border-radius: 0.5rem; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .timeline-slider { flex: 1; accent-color: var(--accent); cursor: pointer; }
-        .time-label-box { display: flex; flex-direction: column; min-width: 90px; }
-        
-        .modal { position: fixed; top: 0; right: 0; height: 100%; width: 280px; background-color: var(--bg-panel); border-left: 1px solid var(--border-color); box-shadow: -10px 0 25px rgba(0,0,0,0.3); z-index: 50; transform: translateX(100%); transition: transform 0.2s ease-out; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-        .modal-open { transform: translateX(0); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
-        .theme-drawer-grid { display: flex; flex-direction: column; gap: 0.5rem; overflow-y: auto; }
-        .theme-opt { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem; background: rgba(0,0,0,0.1); border: 1px solid var(--border-color); border-radius: 0.5rem; cursor: pointer; text-transform: capitalize; color: var(--text-primary); font-size: 0.85rem; }
-        .theme-circle { width: 14px; height: 14px; border-radius: 50%; }
-        
-        .backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(1px); z-index: 40; display: none; }
-        .backdrop-open { display: block; }
-        
-        /* Smooth tile adjustments over dark map elements */
-        .leaflet-layer, .leaflet-control-zoom-in, .leaflet-control-zoom-out { filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%); }
-    </style>
+    <link rel="stylesheet" href="style.css"
 </head>
 <body>
-
-    <header>
-        <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <div style="background: var(--accent); padding: 0.4rem; border-radius: 0.4rem; display: flex; color: white;">
-                <i data-lucide="globe"></i>
-            </div>
-            <div class="header-title">weather<span>Maps</span></div>
+    <nav class="navbar">
+        <div class"logo">Dupid's Space</div>
+        <div class="nav-links>
+           <a href="#">Home</a>
+           <a href="#">About</a>
         </div>
-        <button class="btn" style="padding: 0.4rem;" onclick="toggleDrawer()">
-            <i data-lucide="settings"></i>
-        </button>
+    </nav>
+    <header class="hero">
+        <h1>Welcome To My Friends Page!</h1>
+        <p>My Actual Bestfriends will be on here! e.g: Empathetic </p>
+        <button class="cta-btn"> Friends!</button>
     </header>
 
-    <div class="workspace">
-        <aside>
-            <div class="layer-box">
-                <div class="box-heading">Layers</div>
-                <div class="layer-grid">
-                    <button id="layer-btn-temp" class="btn btn-active" onclick="switchLayer('temp')">Temperature</button>
-                    <button id="layer-btn-wind" class="btn" onclick="switchLayer('wind')">Wind Speed</button>
-                    <button id="layer-btn-precip" class="btn" onclick="switchLayer('precip')">Precipitation</button>
-                    <button id="layer-btn-impact" class="btn" onclick="switchLayer('impact')">Carbon Impact</button>
-                </div>
-            </div>
-
-            <div class="telemetry-card">
-                <div class="box-heading">Active Region</div>
-                <h3 id="region-name" style="font-size: 1.15rem; font-weight: 700;">Western Europe</h3>
-                <div id="active-coordinates" class="coords">51.51° N, 0.13° W</div>
-                
-                <div class="stats-grid">
-                    <div><div class="stat-label">Temperature</div><div id="stat-temp" class="stat-val">--</div></div>
-                    <div><div class="stat-label">Wind Velocity</div><div id="stat-wind" class="stat-val">--</div></div>
-                    <div><div class="stat-label">Precipitation</div><div id="stat-precip" class="stat-val">--</div></div>
-                    <div><div class="stat-label">Carbon Impact</div><div id="stat-aqi" class="stat-val">--</div></div>
-                </div>
-            </div>
-
-            <div class="layer-box" style="flex: 1; min-height: 180px;">
-                <div class="box-heading">24h Barometric Trend</div>
-                <div class="chart-box"><canvas id="telemetryChart"></canvas></div>
-            </div>
-        </aside>
-
-        <div class="map-pane">
-            <div id="map"></div>
-            
-            <div class="timeline-bar">
-                <button id="play-btn" class="play-btn" onclick="togglePlay()"><i data-lucide="play" id="play-icon"></i></button>
+    <main class="grid-colour">
+        <!-----MATE 1----->
+        <div class="profile-card">
+            <h3>Empathetic</h3>
+            <p>Owner Of EMH Modding Hub, Also Friend For 3+ Years</p>
+        </div>
+        
+    <main class="grid-colour">
+        <!-----MATE 2----->
+        <div class="profile-card">
+            <h3>Reddo</h3>
+            <p>Actual DIVAA, Friend </p>
+        </div>
+    </main>
+</body>    
+</html>
