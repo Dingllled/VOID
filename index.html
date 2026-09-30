@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOID // FR.XD</title>
-    <!-- Imports a clean, bold sans-serif font -->
+    <title>VOID // Friends Archive</title>
     <link rel="stylesheet" href="https://googleapis.com">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Main Container wrapping the whole landing page layout -->
+    <!-- 1. LANDING WELCOME SCREEN SECTION -->
     <div class="landing-wrapper">
-        
-        <!-- Subtle Top Border Frame Line with Text -->
         <div class="frame-line-top">
             <span class="meta-center">PRIVATE ARCHIVE // 001</span>
         </div>
 
-        <!-- Centered Core Content Box -->
         <main class="center-content">
             <h1 class="main-title">FRIENDS<span class="purple-dot">.</span></h1>
             <p class="description">A little corner of the internet for people who matter.</p>
             
-            <!-- Styled Purple Button -->
+            <!-- Link pointing exactly to id="explore" below -->
             <a href="#explore" class="enter-btn">
                 <span>ENTER ARCHIVE</span>
                 <div class="icon-box">
@@ -36,86 +31,65 @@
             </a>
         </main>
 
-        <!-- Bottom Border Frame Line with Meta Data Info -->
         <div class="frame-line-bottom">
             <span class="meta-left">BLACK / PURPLE</span>
             <span class="meta-right">EST. 2026</span>
         </div>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOID // Friends Archive</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- Top Navigation Header -->
-    <nav class="archive-nav">
-        <div class="nav-branding">VOID // Friends</div>
-        <div class="nav-meta">PRIVATE ARCHIVE // 001</div>
-    </nav>
-
-    <!-- Main Dynamic Banner Display-->
-    <header class="archive-hero">
-        <h1 class="glitch-title">FRIENDS.</h1>
-        <p class="subtitle">A little corner of the internet for people who matter.</p>
-        <a href="#explore" class="action-trigger-btn">ENTER ARCHIVE ↗</a>
-        <div class="system-stamp">BLACK / PURPLE EST. 2026</div>
-    </header>
-
-    
-
-<div class="section-label-bar">
-    <!-- Left Column: Labels and Massive Title -->
-    <div class="label-left-col">
-        <span class="eyebrow-text">THE INNER CIRCLE</span>
-        <h2 class="massive-title">People worth <br><span class="purple-glow">remembering.</span></h2>
-        <span class="archive-counter">01 / THE ARCHIVE</span>
     </div>
 
-    <!-- Right Column: Description -->
-    <div class="label-right-col">
-        <p class="section-desc">A private visual archive of the people that make the days less ordinary.</p>
-    </div>
-    
-    <!-- Small Bottom Navigation Accent -->
-    <span class="scroll-accent">SCROLL TO EXPLORE</span>
-</div>
+    <!-- 2. MAIN FRIENDS ARCHIVE DISPLAY SECTION (Appears on scroll) -->
+    <section id="explore" class="archive-section">
+        
+        <!-- Header Split Row -->
+        <div class="section-label-bar">
+            <div class="label-left-col">
+                <span class="eyebrow-text">THE INNER CIRCLE</span>
+                <h2 class="massive-title">People worth <br><span class="purple-glow">remembering.</span></h2>
+                <span class="archive-counter">01 / THE ARCHIVE</span>
+            </div>
+            <div class="label-right-col">
+                <p class="section-desc">A private visual archive of the people that make the days less ordinary.</p>
+            </div>
+        </div>
 
-
+        <!-- Cards List Area -->
         <div class="cards-wrapper">
-            <!-- Dynamic Item Card 1 -->
-            <div class="archive-card" data-index="01">
+            <!-- Friend Card 1 -->
+            <div class="archive-card">
                 <div class="card-status-bar">
-                    <span class="card-id">01 / THE ARCHIVE</span>
+                    <span class="card-id">01 // PROFILE</span>
                     <span class="status-indicator active"></span>
+                </div>
+                <div class="profile-pic-container">
+                    <img src="images/empathetic.png" alt="Profile" class="friend-image">
                 </div>
                 <div class="card-content-box">
                     <h3 class="friend-name">Empathetic</h3>
                     <p class="friend-role">Owner of EMH Modding Hub</p>
-                    <div class="meta-tag-line">Friend for 3+ years</div>
                 </div>
             </div>
 
-            <!-- Dynamic Item Card 2 -->
-            <div class="archive-card" data-index="02">
+            <!-- Friend Card 2 -->
+            <div class="archive-card">
                 <div class="card-status-bar">
-                    <span class="card-id">02 / THE ARCHIVE</span>
+                    <span class="card-id">02 // PROFILE</span>
                     <span class="status-indicator active"></span>
+                </div>
+                <div class="profile-pic-container">
+                    <img src="images/reddo.png" alt="Profile" class="friend-image">
                 </div>
                 <div class="card-content-box">
                     <h3 class="friend-name">Reddo</h3>
                     <p class="friend-role">Actual DIVAA</p>
-                    <div class="meta-tag-line">Core Member</div>
                 </div>
             </div>
         </div>
-    </main>
 
-    
-    <footer class="archive-footer">
-        <div class="ticker-text">VOID ARCHIVE MADE FOR THE INNER CIRCLE — ACTIVE CONNECTED — SYSTEM STABLE</div>
-    </footer>
+        <!-- Back to Top Navigation Link -->
+        <div class="return-nav-box">
+            <a href="#" class="return-top-link">↑ RETURN TO MAIN INTERFACE</a>
+        </div>
+    </section>
 
 </body>
 </html>
