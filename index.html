@@ -1,38 +1,68 @@
 <!DOCTYPE html>
-<hmtl lang=en>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Friends Website!</title>
-
-    <link rel="stylesheet" href="style.css"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID // Friends Archive</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class"logo">Dupid's Space</div>
-        <div class="nav-links>
-           <a href="#">Home</a>
-           <a href="#">About</a>
-        </div>
+
+    <!-- Top Navigation Header -->
+    <nav class="archive-nav">
+        <div class="nav-branding">VOID // Friends</div>
+        <div class="nav-meta">PRIVATE ARCHIVE // 001</div>
     </nav>
-    <header class="hero">
-        <h1>Welcome To My Friends Page!</h1>
-        <p>My Actual Bestfriends will be on here! e.g: Empathetic </p>
-        <button class="cta-btn"> Friends!</button>
+
+    <!-- Main Dynamic Banner Display -->
+    <header class="archive-hero">
+        <h1 class="glitch-title">FRIENDS.</h1>
+        <p class="subtitle">A little corner of the internet for people who matter.</p>
+        <a href="#explore" class="action-trigger-btn">ENTER ARCHIVE ↗</a>
+        <div class="system-stamp">BLACK / PURPLE EST. 2026</div>
     </header>
 
-    <main class="grid-colour">
-        <!-----MATE 1----->
-        <div class="profile-card">
-            <h3>Empathetic</h3>
-            <p>Owner Of EMH Modding Hub, Also Friend For 3+ Years</p>
+    
+    <main id="explore" class="archive-grid">
+        <div class="section-label-bar">
+            <span>MY FRIENDS.</span>
+            <h2>People worth <em>remembering.</em></h2>
+            <p class="section-desc">A private visual archive of the people that make the days less ordinary.</p>
         </div>
-        
-    <main class="grid-colour">
-        <!-----MATE 2----->
-        <div class="profile-card">
-            <h3>Reddo</h3>
-            <p>Actual DIVAA, Friend </p>
+
+        <div class="cards-wrapper">
+            <!-- Dynamic Item Card 1 -->
+            <div class="archive-card" data-index="01">
+                <div class="card-status-bar">
+                    <span class="card-id">01 / THE ARCHIVE</span>
+                    <span class="status-indicator active"></span>
+                </div>
+                <div class="card-content-box">
+                    <h3 class="friend-name">Empathetic</h3>
+                    <p class="friend-role">Owner of EMH Modding Hub</p>
+                    <div class="meta-tag-line">Friend for 3+ years</div>
+                </div>
+            </div>
+
+            <!-- Dynamic Item Card 2 -->
+            <div class="archive-card" data-index="02">
+                <div class="card-status-bar">
+                    <span class="card-id">02 / THE ARCHIVE</span>
+                    <span class="status-indicator active"></span>
+                </div>
+                <div class="card-content-box">
+                    <h3 class="friend-name">Reddo</h3>
+                    <p class="friend-role">Actual DIVAA</p>
+                    <div class="meta-tag-line">Core Member</div>
+                </div>
+            </div>
         </div>
     </main>
-</body>    
+
+    
+    <footer class="archive-footer">
+        <div class="ticker-text">VOID ARCHIVE MADE FOR THE INNER CIRCLE — ACTIVE CONNECTED — SYSTEM STABLE</div>
+    </footer>
+
+</body>
 </html>
