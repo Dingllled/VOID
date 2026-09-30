@@ -4,202 +4,441 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOID // Friends Archive</title>
-    <link rel="stylesheet" href="https://googleapis.com">
-    
-    <!-- EMERGENCY INTERNAL STYLE SYSTEM -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-            background-color: #000000;
-        }
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            min-height: 100vh;
-        }
-        .landing-wrapper {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 40px;
-            position: relative;
-            background: radial-gradient(circle at center, rgba(147, 51, 234, 0.12) 0%, rgba(0, 0, 0, 0) 60%);
-        }
-        .frame-line-top {
-            width: 100%;
-            border-top: 1px solid rgba(147, 51, 234, 0.3);
-            padding-top: 15px;
-            text-align: center;
-        }
-        .frame-line-bottom {
-            width: 100%;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .meta-center, .meta-left, .meta-right {
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            color: #555555;
-            font-weight: 600;
-        }
-        .meta-center { color: rgba(147, 51, 234, 0.8); }
-        .center-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .main-title {
-            font-size: 8rem;
-            font-weight: 900;
-            letter-spacing: -0.04em;
-            line-height: 1;
-            margin-bottom: 25px;
-            text-shadow: 0 0 60px rgba(147, 51, 234, 0.35);
-        }
-        .purple-dot {
-            color: #a855f7;
-            text-shadow: 0 0 20px #a855f7;
-        }
-        .description {
-            font-size: 1.1rem;
-            color: #888888;
-            max-width: 500px;
-            margin-bottom: 40px;
-        }
-        .enter-btn {
-            display: flex;
-            align-items: center;
-            background-color: #a855f7;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            padding: 6px 6px 6px 24px;
-            border-radius: 4px;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-        }
-        .enter-btn span { margin-right: 16px; }
-        .icon-box {
-            background-color: rgba(255, 255, 255, 0.15);
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2px;
-        }
-        .icon-box svg { width: 16px; height: 16px; color: #ffffff; }
-        .enter-btn:hover { background-color: #b566ff; box-shadow: 0 0 30px rgba(168, 85, 247, 0.7); }
-        .archive-section {
-            min-height: 100vh;
-            padding: 120px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
+<style>
+    /* ==========================================
+       1. GLOBAL SYSTEM SETUP & CONFIGURATION
+       ========================================== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        background-color: #000000;
+    }
+
+    body {
+        background-color: #000000;
+        color: #ffffff;
+        min-height: 100vh;
+    }
+
+    /* ==========================================
+       2. WELCOME INTERFACE LAYER (HERO)
+       ========================================== */
+    .landing-wrapper {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 40px;
+        position: relative;
+        /* Immersive ambient purple background glow */
+        background: radial-gradient(circle at center, rgba(147, 51, 234, 0.12) 0%, rgba(0, 0, 0, 0) 60%);
+    }
+
+    .frame-line-top {
+        width: 100%;
+        border-top: 1px solid rgba(147, 51, 234, 0.3);
+        padding-top: 15px;
+        text-align: center;
+    }
+
+    .frame-line-bottom {
+        width: 100%;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .meta-center, .meta-left, .meta-right {
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        color: #555555;
+        font-weight: 600;
+    }
+
+    .meta-center {
+        color: rgba(147, 51, 234, 0.8);
+    }
+
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .main-title {
+        font-size: 8rem;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        margin-bottom: 25px;
+        text-shadow: 0 0 60px rgba(147, 51, 234, 0.35);
+    }
+
+    .purple-dot {
+        color: #a855f7;
+        text-shadow: 0 0 20px #a855f7;
+    }
+
+    .description {
+        font-size: 1.1rem;
+        color: #888888;
+        max-width: 500px;
+        margin-bottom: 40px;
+    }
+
+    /* Landing Action Trigger Button */
+    .enter-btn {
+        display: flex;
+        align-items: center;
+        background-color: #a855f7;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        padding: 6px 6px 6px 24px;
+        border-radius: 4px;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+    }
+
+    .enter-btn span {
+        margin-right: 16px;
+    }
+
+    .icon-box {
+        background-color: rgba(255, 255, 255, 0.15);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+    }
+
+    .icon-box svg {
+        width: 16px;
+        height: 16px;
+        color: #ffffff;
+    }
+
+    .enter-btn:hover {
+        background-color: #b566ff;
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.7);
+    }
+
+    /* ==========================================
+       3. ARCHIVE GRID LAYOUT SYSTEM
+       ========================================== */
+    .archive-section {
+        min-height: 100vh;
+        padding: 120px 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .section-label-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 60px;
+        border-bottom: 1px solid #141414;
+        margin-bottom: 60px;
+    }
+
+    .label-left-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .eyebrow-text {
+        font-size: 0.75rem;
+        color: #a855f7;
+        letter-spacing: 0.2em;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .massive-title {
+        font-size: 4.5rem;
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        margin-bottom: 25px;
+    }
+
+    .purple-glow {
+        color: #a855f7;
+        text-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+    }
+
+    .archive-counter {
+        font-size: 0.7rem;
+        color: #444444;
+        letter-spacing: 0.1em;
+    }
+
+    .label-right-col {
+        max-width: 400px;
+        padding-bottom: 28px;
+    }
+
+    .section-desc {
+        color: #888888;
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    /* ==========================================
+       4. FILTER CONTROL TAB COMPONENTS
+       ========================================== */
+    .filter-tab-bar {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 40px;
+        flex-wrap: wrap; 
+    }
+
+    .tab-btn {
+        background-color: #050505;
+        border: 1px solid #161616;
+        color: #888888;
+        padding: 10px 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .tab-btn:hover {
+        color: #ffffff;
+        border-color: #333333;
+    }
+
+    .tab-btn.active {
+        background-color: rgba(147, 51, 234, 0.1);
+        border-color: #a855f7;
+        color: #a855f7;
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+    }
+
+    /* Structural Grid Arrangement */
+    .cards-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+        margin-bottom: 80px;
+    }
+
+    .archive-card {
+        background-color: #050505;
+        border: 1px solid #161616;
+        padding: 24px;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .archive-card:hover {
+        border-color: #a855f7;
+        transform: translateY(-2px);
+    }
+
+    .card-status-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .card-id {
+        font-size: 0.7rem;
+        color: #555555;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    }
+
+    .status-indicator {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+    }
+
+    .status-indicator.active {
+        background-color: #a855f7;
+        box-shadow: 0 0 8px #a855f7;
+    }
+
+    /* ==========================================
+       5. PICTURE FRAME PLATFORM
+       ========================================== */
+    .profile-pic-container {
+        width: 100%;
+        height: 240px;
+        background-color: #0d0d0d;
+        margin-bottom: 20px;
+        overflow: hidden;
+        border: 1px solid #1c1c1c;
+        position: relative;
+        border-radius: 4px;
+    }
+
+    .placeholder-pic-block {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.15);
+    }
+
+    .color-one { background: linear-gradient(135deg, #160d2b 0%, #050505 100%); border-bottom: 2px solid #a855f7; }
+    .color-two { background: linear-gradient(135deg, #0b1a1e 0%, #050505 100%); border-bottom: 2px solid #06b6d4; }
+
+    .friend-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 2;
+    }
+
+    .card-content-box {
+        padding-top: 5px;
+    }
+
+    .friend-name {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+        letter-spacing: -0.02em;
+    }
+
+    .friend-role {
+        color: #888888;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    /* ==========================================
+       6. INTERNAL CARD ACTION BUTTONS
+       ========================================== */
+    .card-action-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: #0c0c0c;
+        border: 1px solid #1a1a1a;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 12px 16px;
+        margin-top: 20px;
+        border-radius: 4px;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-arrow {
+        color: #a855f7; 
+        font-size: 0.85rem;
+        transition: transform 0.2s ease;
+    }
+
+    .card-action-btn:hover {
+        background-color: #a855f7;
+        color: #ffffff;
+        border-color: #b566ff;
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+    }
+
+    .card-action-btn:hover .btn-arrow {
+        color: #ffffff;
+        transform: translate(2px, -2px);
+    }
+
+    /* Return Utility Navigation Link Elements */
+    .return-nav-box {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 1px solid #141414;
+    }
+
+    .return-top-link {
+        font-size: 0.75rem;
+        color: #555555;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+
+    .return-top-link:hover {
+        color: #a855f7;
+    }
+
+    /* ==========================================
+       7. RESPONSIVE SCALE ADJUSTMENTS
+       ========================================== */
+    @media (max-width: 900px) {
         .section-label-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-bottom: 60px;
-            border-bottom: 1px solid #141414;
-            margin-bottom: 60px;
-        }
-        .label-left-col { display: flex; flex-direction: column; }
-        .eyebrow-text {
-            font-size: 0.75rem;
-            color: #a855f7;
-            letter-spacing: 0.2em;
-            font-weight: 600;
-            margin-bottom: 15px;
+            flex-direction: column;
+            align-items: flex-start;
         }
         .massive-title {
+            font-size: 3rem;
+        }
+        .label-right-col {
+            margin-top: 20px;
+            padding-bottom: 0;
+        }
+        .main-title {
             font-size: 4.5rem;
-            font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: -0.04em;
-            margin-bottom: 25px;
         }
-        .purple-glow { color: #a855f7; text-shadow: 0 0 30px rgba(168, 85, 247, 0.4); }
-        .archive-counter { font-size: 0.7rem; color: #444444; letter-spacing: 0.1em; }
-        .label-right-col { max-width: 400px; padding-bottom: 28px; }
-        .section-desc { color: #888888; font-size: 1.05rem; line-height: 1.6; }
-        .cards-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-        .archive-card {
-            background-color: #050505;
-            border: 1px solid #161616;
-            padding: 24px;
-            border-radius: 6px;
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-        .archive-card:hover { border-color: #a855f7; transform: translateY(-2px); }
-        .card-status-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .card-id { font-size: 0.7rem; color: #555555; font-weight: 600; letter-spacing: 0.05em; }
-        .status-indicator { width: 6px; height: 6px; border-radius: 50%; }
-        .status-indicator.active { background-color: #a855f7; box-shadow: 0 0 8px #a855f7; }
-        .profile-pic-container {
-            width: 100%;
-            height: 240px;
-            background-color: #0d0d0d;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 1px solid #1c1c1c;
-            position: relative;
-            border-radius: 4px;
-        }
-        .placeholder-pic-block {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.5rem; font-weight: 900; letter-spacing: 0.05em;
-            color: rgba(255, 255, 255, 0.15);
-        }
-        .color-one { background: linear-gradient(135deg, #160d2b 0%, #050505 100%); border-bottom: 2px solid #a855f7; }
-        .color-two { background: linear-gradient(135deg, #0b1a1e 0%, #050505 100%); border-bottom: 2px solid #06b6d4; }
-        .friend-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
-        .card-content-box { padding-top: 5px; }
-        .friend-name { font-size: 1.35rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.02em; }
-        .friend-role { color: #888888; font-size: 0.95rem; line-height: 1.4; }
-        .return-nav-box { text-align: center; padding-top: 40px; border-top: 1px solid #141414; }
-        .return-top-link { font-size: 0.75rem; color: #555555; text-decoration: none; letter-spacing: 0.1em; font-weight: 600; transition: color 0.2s ease; }
-        .return-top-link:hover { color: #a855f7; }
-        @media (max-width: 900px) {
-            .section-label-bar { flex-direction: column; align-items: flex-start; }
-            .massive-title { font-size: 3rem; }
-            .label-right-col { margin-top: 20px; padding-bottom: 0; }
-            .main-title { font-size: 4.5rem; }
-            .landing-wrapper { padding: 20px; }
-        }
-    </style>
+.landing-wrapper {
+padding: 20px;
+}
+}
+    <link rel="stylesheet" href="https://googleapis.com">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- 1. LANDING WELCOME DASHBOARD LAYER -->
     <div class="landing-wrapper">
         <div class="frame-line-top">
             <span class="meta-center">PRIVATE ARCHIVE // 001</span>
         </div>
+
         <main class="center-content">
             <h1 class="main-title">FRIENDS<span class="purple-dot">.</span></h1>
             <p class="description">A little corner of the internet for people who matter.</p>
+            
             <a href="#explore" class="enter-btn">
                 <span>ENTER ARCHIVE</span>
                 <div class="icon-box">
@@ -210,13 +449,17 @@
                 </div>
             </a>
         </main>
+
         <div class="frame-line-bottom">
             <span class="meta-left">BLACK / PURPLE</span>
             <span class="meta-right">EST. 2026</span>
         </div>
     </div>
 
+    <!-- 2. FRIENDS DISPLAY GRID SECTION -->
     <section id="explore" class="archive-section">
+        
+        <!-- Horizontal Layout Header Split -->
         <div class="section-label-bar">
             <div class="label-left-col">
                 <span class="eyebrow-text">THE INNER CIRCLE</span>
@@ -228,10 +471,21 @@
             </div>
         </div>
 
+        <!-- NEW: Minimalist Filter Control Bar Items -->
+        <div class="filter-tab-bar">
+            <button class="tab-btn active" data-target="all">ALL MEMBERS</button>
+            <button class="tab-btn" data-target="love">LOVE</button>
+            <button class="tab-btn" data-target="besties">BESTIES</button>
+            <button class="tab-btn" data-target="og">OG</button>
+        </div>
+
+        <!-- The Responsive Grid Layout -->
         <div class="cards-wrapper">
-            <div class="archive-card">
+            
+            <!-- Friend Data Item Card 1 (Mapped to "besties") -->
+            <div class="archive-card" data-category="besties">
                 <div class="card-status-bar">
-                    <span class="card-id">01 // MEMBER PROFILE</span>
+                    <span class="card-id">01 // BESTIES</span>
                     <span class="status-indicator active"></span>
                 </div>
                 <div class="profile-pic-container">
@@ -241,24 +495,87 @@
                 <div class="card-content-box">
                     <h3 class="friend-name">Empathetic</h3>
                     <p class="friend-role">Owner of EMH Modding Hub</p>
+                    <a href="#" target="_blank" class="card-action-btn">
+                        <span>LAUNCH INTERFACE</span>
+                        <span class="btn-arrow">↗</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="archive-card">
+            <!-- Friend Data Item Card 2 (Mapped to "og") -->
+            <div class="archive-card" data-category="og">
                 <div class="card-status-bar">
-                    <span class="card-id">02 // MEMBER PROFILE</span>   
+                    <span class="card-id">02 // OG</span>
                     <span class="status-indicator active"></span>
                 </div>
                 <div class="profile-pic-container">
-                    <div class="placeholder-pic-block color-one">RD</div>
-                    <img src="images/empathetic.png" alt="Profile" class="friend-image" onerror="this.style.display='none';">
+                    <div class="placeholder-pic-block color-two">RD</div>
+                    <img src="images/reddo.png" alt="Profile" class="friend-image" onerror="this.style.display='none';">
                 </div>
                 <div class="card-content-box">
                     <h3 class="friend-name">Reddo</h3>
-                    <p class="friend-role">Absolute divaaa 💅</p>
+                    <p class="friend-role">Actual DIVAA</p>
+                    <a href="#" target="_blank" class="card-action-btn">
+                        <span>LAUNCH INTERFACE</span>
+                        <span class="btn-arrow">↗</span>
+                    </a>
                 </div>
             </div>
+
+            <!-- Custom Example Card 3 (Mapped to "love") -->
+            <div class="archive-card" data-category="love">
+                <div class="card-status-bar">
+                    <span class="card-id">03 // LOVE</span>
+                    <span class="status-indicator active"></span>
+                </div>
+                <div class="profile-pic-container">
+                    <div class="placeholder-pic-block color-one">LV</div>
+                </div>
+                <div class="card-content-box">
+                    <h3 class="friend-name">Special Person</h3>
+                    <p class="friend-role">Description placeholder details</p>
+                    <a href="#" target="_blank" class="card-action-btn">
+                        <span>LAUNCH INTERFACE</span>
+                        <span class="btn-arrow">↗</span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="return-nav-box">
+            <a href="#" class="return-top-link">↑ RETURN TO MAIN INTERFACE</a>
         </div>
     </section>
+
+    <!-- NEW: Functional JavaScript engine logic controlling tab sorting -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const cards = document.querySelectorAll('.archive-card');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 1. Remove active state from old tabs, apply to clicked tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    // 2. Identify selected group
+                    const targetCategory = tab.getAttribute('data-target');
+
+                    // 3. Loop through cards and isolate categories
+                    cards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        if (targetCategory === 'all' || cardCategory === targetCategory) {
+                            card.style.display = 'flex'; // Reveal matching items
+                        } else {
+                            card.style.display = 'none';  // Hide mismatched items
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
