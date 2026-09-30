@@ -1,329 +1,160 @@
 /* ==========================================
-   1. GLOBAL SYSTEM SETUP & CONFIGURATION
+   1. CORE ALIGNMENT & DESIGN RESET
    ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace, sans-serif;
-    letter-spacing: -0.02em;
-}
-
-html {
-    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
     background-color: #000000;
     color: #ffffff;
     min-height: 100vh;
+    overflow: hidden; /* Keeps the landing page crisp and perfectly locked in place */
+}
+
+/* ==========================================
+   2. OUTER FRAME LAYOUT RULES
+   ========================================== */
+.landing-wrapper {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    justify-content: space-between;
+    padding: 40px; /* Outer spacing layout frame */
+    position: relative;
+    /* This creates the massive purple ambient spotlight glowing behind the center text */
+    background: radial-gradient(circle at center, rgba(147, 51, 234, 0.15) 0%, rgba(0, 0, 0, 0) 60%);
 }
 
-/* ==========================================
-   2. INTERACTIVE COMPONENT ELEMENT DESIGN
-   ========================================== */
-.archive-nav {
+/* Horizontal technical framing line at the top */
+.frame-line-top {
+    width: 100%;
+    border-top: 1px solid rgba(147, 51, 234, 0.3);
+    padding-top: 15px;
+    text-align: center;
+}
+
+/* Horizontal technical framing line at the bottom */
+.frame-line-bottom {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 24px 40px;
-    border-bottom: 1px solid #1a1a1a;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
-.nav-branding {
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.95rem;
-    color: #a855f7; /* Vibrant purple accent theme color */
-}
-
-.nav-meta {
-    font-size: 0.75rem;
+/* Small tech text adjustments */
+.meta-center, .meta-left, .meta-right {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
     color: #666666;
-    letter-spacing: 0.1em;
+    font-weight: 400;
+}
+
+.meta-center {
+    color: rgba(147, 51, 234, 0.7); /* Dim purple meta info text */
 }
 
 /* ==========================================
-   3. HERO BANNER MAIN DISPLAY
+   3. CENTERED HERO CONTENT AREA
    ========================================== */
-.archive-hero {
+.center-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 120px 20px;
-    border-bottom: 1px solid #1a1a1a;
+    margin-top: -40px; /* Slight offset compensation to balance out visual weight */
 }
 
-.glitch-title {
-    font-size: 4.5rem;
+/* Massive title text adjustments */
+.main-title {
+    font-size: 8rem;
     font-weight: 900;
-    letter-spacing: 0.05em;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
-}
-
-.archive-hero .subtitle {
-    font-size: 1rem;
-    color: #888888;
-    max-width: 460px;
-    margin-bottom: 35px;
-    line-height: 1.5;
-}
-
-.action-trigger-btn {
-    display: inline-block;
-    background-color: #ffffff;
-    color: #000000;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 14px 28px;
-    border-radius: 0px; /* Minimalistic, sharp edges */
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.action-trigger-btn:hover {
-    background-color: #a855f7;
-    color: #ffffff;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(168, 85, 247, 0.15);
-}
-
-.system-stamp {
-    margin-top: 40px;
-    font-size: 0.7rem;
-    color: #444444;
-    letter-spacing: 0.2em;
-}
-
-/* ==========================================
-   4. DATA WRAPPER CARDS & CONTENT LAYOUT
-   ========================================== */
-.archive-grid {
-    padding: 80px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-    /* ==========================================
-   4. THE INNER CIRCLE SPLIT LAYOUT
-   ========================================== */
-.section-label-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; /* Aligns the description text to the bottom baseline */
-    padding: 100px 40px 60px 40px;
-    position: relative;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* Left side container holding the headings */
-.label-left-col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.eyebrow-text {
-    font-size: 0.75rem;
-    color: #a855f7; /* Purple color */
-    letter-spacing: 0.2em;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
-.massive-title {
-    font-size: 5rem; /* Makes the font exceptionally huge */
-    font-weight: 700;
-    line-height: 0.95;
     letter-spacing: -0.04em;
-    color: #ffffff;
-    margin-bottom: 40px;
+    line-height: 1;
+    margin-bottom: 25px;
+    position: relative;
+    /* Strong layered light bloom filter glow behind the main white words */
+    text-shadow: 0 0 60px rgba(147, 51, 234, 0.4), 0 0 120px rgba(147, 51, 234, 0.2);
 }
 
-/* Adds that specific purple color fade seen in your image */
-.purple-glow {
+/* Bright neon color accent dot next to the word */
+.purple-dot {
     color: #a855f7;
-    text-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+    text-shadow: 0 0 20px #a855f7, 0 0 40px rgba(168, 85, 247, 0.6);
 }
 
-.archive-counter {
-    font-size: 0.7rem;
-    color: #444444;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-/* Right side container holding the paragraph description */
-.label-right-col {
-    max-width: 380px; /* Prevents the text from stretching too wide across the screen */
-    margin-bottom: 45px; /* Aligns nicely next to the massive title line */
-    padding-left: 20px;
-}
-
-.section-desc {
+.description {
+    font-size: 1.1rem;
     color: #888888;
-    font-size: 1.05rem;
-    line-height: 1.6;
+    max-width: 500px;
+    margin-bottom: 40px;
     font-weight: 400;
     letter-spacing: -0.01em;
 }
 
-/* Tiny absolute label text in the bottom right corner */
-.scroll-accent {
-    position: absolute;
-    bottom: 20px;
-    right: 40px;
-    font-size: 0.65rem;
-    color: #444444;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-}
-
-/* Responsive Fix: If the screen is small (like a mobile phone), stack them vertically instead of side-by-side */
-@media (max-width: 900px) {
-    .section-label-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 60px 20px;
-    }
-    .massive-title {
-        font-size: 3.5rem;
-    }
-    .label-right-col {
-        margin-top: 30px;
-        padding-left: 0;
-    }
-    .scroll-accent {
-        display: none; /* Hides clutter on mobile devices */
-    }
-}
-
-}
-
-.section-label-bar span {
-    font-size: 0.75rem;
-    color: #a855f7;
-    letter-spacing: 0.15em;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.section-label-bar h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 10px;
-}
-
-.section-label-bar h2 em {
-    font-style: italic;
-    font-weight: 700;
-}
-
-.section-desc {
-    color: #666666;
-    font-size: 0.9rem;
-}
-
-.cards-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-}
-
-/* Card Structure Styling */
-.archive-card {
-    background-color: #050505;
-    border: 1px solid #1a1a1a;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.archive-card:hover {
-    border-color: #a855f7;
-    transform: scale(1.01);
-}
-
-.card-status-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #121212;
-    padding-bottom: 10px;
-}
-
-.card-id {
-    font-size: 0.7rem;
-    color: #444444;
-}
-
-.status-indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-}
-
-.status-indicator.active {
-    background-color: #a855f7;
-    box-shadow: 0 0 8px #a855f7;
-}
-
-.friend-name {
-    font-size: 1.35rem;
-    font-weight: bold;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-}
-
-.friend-role {
-    color: #888888;
-    font-size: 0.85rem;
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
-
-.meta-tag-line {
-    font-size: 0.75rem;
-    color: #444444;
-    text-transform: uppercase;
-}
-
 /* ==========================================
-   5. SYSTEM UTILITY STATUS FOOTER
+   4. CUSTOM PURPLE BUTTON DESIGN BLOCK
    ========================================== */
-.archive-footer {
-    margin-top: auto;
-    background-color: #050505;
-    border-top: 1px solid #1a1a1a;
-    padding: 20px;
-    text-align: center;
-    overflow: hidden;
+.enter-btn {
+    display: flex;
+    align-items: center;
+    background-color: #a855f7;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    padding: 6px 6px 6px 24px; /* Gives more room for text on the left */
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
 }
 
-.ticker-text {
-    font-size: 0.7rem;
-    color: #444444;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+.enter-btn span {
+    margin-right: 16px;
+}
+
+/* Square backdrop layout element for the arrow icon */
+.icon-box {
+    background-color: rgba(255, 255, 255, 0.15);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    transition: transform 0.2s ease;
+}
+
+.icon-box svg {
+    width: 16px;
+    height: 16px;
+    color: #ffffff;
+}
+
+/* Dynamic Interactive Hover Micro-Movements */
+.enter-btn:hover {
+    background-color: #b566ff;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.7);
+    transform: translateY(-1px);
+}
+
+.enter-btn:hover .icon-box {
+    transform: rotate(45deg); /* Dynamic subtle spin movement */
+}
+
+/* Responsive Scaling Tweak for smaller computer screens and smartphones */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 4.5rem;
+    }
+    .landing-wrapper {
+        padding: 20px;
+    }
 }
