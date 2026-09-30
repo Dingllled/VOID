@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOID //</title>
+    <title>VOID:// </title>
+    <!-- Imports the premium sans-serif typography directly into your code -->
     <link rel="stylesheet" href="https://googleapis.com">
+    <!-- CRITICAL FILE LINK: Must match your stylesheet file name exactly -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. LANDING WELCOME SCREEN SECTION -->
+    <!-- 1. LANDING WELCOME DASHBOARD LAYER -->
     <div class="landing-wrapper">
         <div class="frame-line-top">
             <span class="meta-center">PRIVATE ARCHIVE // 001</span>
@@ -19,7 +21,6 @@
             <h1 class="main-title">FRIENDS<span class="purple-dot">.</span></h1>
             <p class="description">A little corner of the internet for people who matter.</p>
             
-            <!-- Link pointing exactly to id="explore" below -->
             <a href="#explore" class="enter-btn">
                 <span>ENTER ARCHIVE</span>
                 <div class="icon-box">
@@ -37,10 +38,10 @@
         </div>
     </div>
 
-    <!-- 2. MAIN FRIENDS ARCHIVE DISPLAY SECTION (Appears on scroll) -->
+    <!-- 2. FRIENDS DISPLAY GRID SECTION -->
     <section id="explore" class="archive-section">
         
-        <!-- Header Split Row -->
+        <!-- Premium Horizontal Layout Header Split -->
         <div class="section-label-bar">
             <div class="label-left-col">
                 <span class="eyebrow-text">THE INNER CIRCLE</span>
@@ -52,16 +53,20 @@
             </div>
         </div>
 
-        <!-- Cards List Area -->
+        <!-- The Responsive Grid Grid Layout -->
         <div class="cards-wrapper">
-            <!-- Friend Card 1 -->
+            
+            <!-- Friend Data Item Card 1 -->
             <div class="archive-card">
                 <div class="card-status-bar">
-                    <span class="card-id">01 // PROFILE</span>
+                    <span class="card-id">01 // MEMBER PROFILE</span>
                     <span class="status-indicator active"></span>
                 </div>
+                <!-- Profile picture frame container -->
                 <div class="profile-pic-container">
-                    <img src="images/empathetic.png" alt="Profile" class="friend-image">
+                    <!-- Placeholder color profile blocks will protect your space until you upload physical images -->
+                    <div class="placeholder-pic-block color-one">EM</div>
+                    <img src="images/empathetic.png" alt="Profile" class="friend-image" onerror="this.style.display='none';">
                 </div>
                 <div class="card-content-box">
                     <h3 class="friend-name">Empathetic</h3>
@@ -69,23 +74,25 @@
                 </div>
             </div>
 
-            <!-- Friend Card 2 -->
+            <!-- Friend Data Item Card 2 -->
             <div class="archive-card">
                 <div class="card-status-bar">
-                    <span class="card-id">02 // PROFILE</span>
+                    <span class="card-id">02 // MEMBER PROFILE</span>
                     <span class="status-indicator active"></span>
                 </div>
                 <div class="profile-pic-container">
-                    <img src="images/reddo.png" alt="Profile" class="friend-image">
+                    <div class="placeholder-pic-block color-two">RD</div>
+                    <img src="images/reddo.png" alt="Profile" class="friend-image" onerror="this.style.display='none';">
                 </div>
                 <div class="card-content-box">
                     <h3 class="friend-name">Reddo</h3>
                     <p class="friend-role">Actual DIVAA</p>
                 </div>
             </div>
+            
         </div>
 
-        <!-- Back to Top Navigation Link -->
+        <!-- Back to Interface Access link -->
         <div class="return-nav-box">
             <a href="#" class="return-top-link">↑ RETURN TO MAIN INTERFACE</a>
         </div>
