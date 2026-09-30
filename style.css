@@ -118,10 +118,104 @@ body {
     width: 100%;
 }
 
+    /* ==========================================
+   4. THE INNER CIRCLE SPLIT LAYOUT
+   ========================================== */
 .section-label-bar {
-    margin-bottom: 60px;
-    border-left: 2px solid #a855f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Aligns the description text to the bottom baseline */
+    padding: 100px 40px 60px 40px;
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Left side container holding the headings */
+.label-left-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.eyebrow-text {
+    font-size: 0.75rem;
+    color: #a855f7; /* Purple color */
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.massive-title {
+    font-size: 5rem; /* Makes the font exceptionally huge */
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+/* Adds that specific purple color fade seen in your image */
+.purple-glow {
+    color: #a855f7;
+    text-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.archive-counter {
+    font-size: 0.7rem;
+    color: #444444;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Right side container holding the paragraph description */
+.label-right-col {
+    max-width: 380px; /* Prevents the text from stretching too wide across the screen */
+    margin-bottom: 45px; /* Aligns nicely next to the massive title line */
     padding-left: 20px;
+}
+
+.section-desc {
+    color: #888888;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Tiny absolute label text in the bottom right corner */
+.scroll-accent {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 0.65rem;
+    color: #444444;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* Responsive Fix: If the screen is small (like a mobile phone), stack them vertically instead of side-by-side */
+@media (max-width: 900px) {
+    .section-label-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 60px 20px;
+    }
+    .massive-title {
+        font-size: 3.5rem;
+    }
+    .label-right-col {
+        margin-top: 30px;
+        padding-left: 0;
+    }
+    .scroll-accent {
+        display: none; /* Hides clutter on mobile devices */
+    }
+}
+
 }
 
 .section-label-bar span {
